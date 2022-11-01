@@ -1,0 +1,86 @@
+public class Main {
+    public static void main(String[] args) {
+       numberToWords(0);
+    }
+
+    public static int getDigitCount(int number){
+        if(number < 0){
+            return -1;
+        }
+        int digitsCount = 0;
+        if(number == 0){
+            digitsCount++;
+        }else{
+        while (number !=0){
+            number/=10;
+            digitsCount++;
+        }
+        }
+        return digitsCount;
+    }
+
+    public static int reverse(int number){
+        int reverse = 0;
+        int stored = number;
+        while (stored !=0){
+            int lastDigit = stored % 10;
+            reverse = (reverse * 10) + lastDigit;
+            stored /= 10;
+        }
+        return reverse;
+    }
+    public static void numberToWords(int number){
+       if(number < 0){
+           System.out.println("Invalid Value");
+       }
+        int iterations = getDigitCount(number);
+       int numberToPrintAsWords = reverse(number);
+       String numberToString = "";
+       for(int i = 0; i < iterations; i++){
+           int currentDigit = numberToPrintAsWords % 10;
+           switch (currentDigit){
+               case 0:
+                   numberToString+= "Zero ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 1:
+                   numberToString+= "One ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 2:
+                   numberToString+= "Two ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 3:
+                   numberToString+= "Three ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 4:
+                   numberToString+= "Four ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 5:
+                   numberToString+= "Five ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 6:
+                   numberToString+= "Six ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 7:
+                   numberToString+= "Seven ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 8:
+                   numberToString+= "Eight ";
+                   numberToPrintAsWords/=10;
+                   break;
+               case 9:
+                   numberToString+= "Nine ";
+                   numberToPrintAsWords/=10;
+                   break;
+           }
+       }
+        System.out.println(numberToString);
+    }
+}
